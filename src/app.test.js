@@ -7,7 +7,7 @@ let page;
 let browser;
 
 const tests = ['plus', 'minus', 'multi', 'divide', 'modulo'];
-const results = ['17', '13', '30', '7.5', '1'];
+const operation = ['+', '-', '*', '/', '%'];
 const tests_dot = ['plus', 'minus', 'multi', 'divide'];
 const results_dots = ['5.2', '2.5999999999999996', '5.07', '3'];
 
@@ -27,16 +27,20 @@ describe(`${projectName} - test suite`, () => {
     it(`Can use ${test}`, async () => {
       await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
 
-      await page.click('#digit_1');
-      await page.click('#digit_5');
+      const num1 = Math.floor(Math.random() * 10);
+      const num2 = Math.floor(Math.random() * 10);
+
+      await page.click(`#digit_${num1}`);
+      await page.click(`#digit_${num2}`);
       await page.click(`#op_${test}`);
-      await page.click('#digit_2');
+      await page.click(`#digit_${num1}`);
       await page.click('#equal');
+
       const result = await page.$('.result');
       const resultsValue = await (
         await result.getProperty('innerText')
       ).jsonValue();
-      expect(resultsValue).toBe(results[index]);
+      expect(resultsValue).toBe(`${eval(`${num1}${num2}${operation[index]}${num1}`)}`);
     });
   });
 
@@ -44,19 +48,24 @@ describe(`${projectName} - test suite`, () => {
     it(`Can use ${test} with dot`, async () => {
       await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
 
-      await page.click('#digit_3');
+      const num1 = Math.floor(Math.random() * 10);
+      const num2 = Math.floor(Math.random() * 10);
+      const num3 = Math.floor(Math.random() * 10);
+
+      await page.click(`#digit_${num1}`);
       await page.click('#dot');
-      await page.click('#digit_9');
+      await page.click(`#digit_${num2}`);
       await page.click(`#op_${test}`);
-      await page.click('#digit_1');
+      await page.click(`#digit_${num3}`);
       await page.click('#dot');
-      await page.click('#digit_3');
+      await page.click(`#digit_${num1}`);
       await page.click('#equal');
+
       const result = await page.$('.result');
       const resultsValue = await (
         await result.getProperty('innerText')
       ).jsonValue();
-      expect(resultsValue).toBe(results_dots[index]);
+      expect(resultsValue).toBe(`${eval(`${num1}.${num2}${operation[index]}${num3}.${num1}`)}`);
     });
   });
 
@@ -134,5 +143,4 @@ describe(`${projectName} - test suite`, () => {
     ).jsonValue();
     expect(resultsValue).toBe('7');
   });
-
 });

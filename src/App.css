@@ -50,20 +50,97 @@ border-radius: 3%;
 }
 
 .calculator-digits {
-  display: flex;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "op_modulo op_power op_sqrt op_AC"
+  "digit_7 digit_8 digit_9 op_plus"
+  "digit_4 digit_5 digit_6 op_minus"
+  "digit_1 digit_2 digit_3 op_multi"
+  "dot digit_0 equal op_divide";
   margin: 0 auto;
   border: 2px solid  #1C1C1C;
   border-radius: 5px;
 }
 
-.calculator-buttons {
-  display: grid;
-  grid-template-columns: 3fr 1fr ;
-  /* padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 15px; */
+#op_modulo{
+  grid-area: op_modulo;
+}
+
+#op_power{
+  grid-area: op_power;
+}
+
+#op_sqrt{
+  grid-area: op_sqrt;
+}
+
+#op_AC{
+  grid-area: op_AC;
+}
+
+#digit_7{
+  grid-area: digit_7;
+}
+
+#digit_8{
+  grid-area: digit_8;
+}
+
+#digit_9{
+  grid-area: digit_9;
+}
+
+#op_plus{
+  grid-area: op_plus;
+}
+
+#digit_4{
+  grid-area: digit_4;
+}
+
+#digit_5{
+  grid-area: digit_5;
+}
+
+#digit_6{
+  grid-area: digit_6;
+}
+
+#op_minus{
+  grid-area: op_minus;
+}
+
+#digit_1{
+  grid-area: digit_1;
+}
+
+#digit_2{
+  grid-area: digit_2;
+}
+
+#digit_3{
+  grid-area: digit_3;
+}
+
+#op_multi{
+  grid-area: op_multi;
+}
+
+#dot{
+  grid-area: dot;
+}
+
+#digit_0{
+  grid-area: digit_0;
+}
+
+#equal{
+  grid-area: equal;
+}
+
+#op_divide{
+  grid-area: op_divide;
 }
 
 .button {
@@ -102,11 +179,6 @@ border-radius: 3%;
 
 .delete {
   background-color: rgb(46, 153, 46);
-}
-
-.digits{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .operations{

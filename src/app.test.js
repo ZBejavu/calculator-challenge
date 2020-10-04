@@ -2,31 +2,14 @@
  * @jest-environment node
  */
 const puppeteer = require('puppeteer');
-function calculate(operation, num1, num2 = 0) {
-  switch (operation) {
-    case 'plus':
-      return num1 + num2;
-    case 'minus':
-      return num1 - num2;
-    case 'multi':
-      return num1 * num2;
-    case 'divide':
-      return num1 / num2;
-    case 'modulo':
-      return num1 % num2;
-    case 'power':
-      return Math.pow(num1, 2);
-    case 'sqrt':
-      return Math.sqrt(num1);
-  }
-}
 
 let page;
 let browser;
 
 const tests = ['plus', 'minus', 'multi', 'divide', 'modulo'];
+const operation = ['+', '-', '*', '/', '%'];
 const tests_dot = ['plus', 'minus', 'multi', 'divide'];
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const results_dots = ['5.2', '2.5999999999999996', '5.07', '3'];
 
 jest.setTimeout(30000);
 const projectName = 'Calculator Challenge';
@@ -38,29 +21,6 @@ describe(`${projectName} - test suite`, () => {
 
   afterAll(async () => {
     await browser.close();
-  });
-
-  digits.forEach((digit) => {
-    it(`can display the ${digit} digit on the screen by clicking the ${digit} button`, async () => {
-      await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
-      await page.click(`#digit_${digit}`);
-      const result = await page.$('.result');
-      const resultsValue = await (
-        await result.getProperty('innerText')
-      ).jsonValue();
-      expect(resultsValue).toBe(digit.toString());
-    });
-  });
-
-  it(`can display a double-digit number by clicking two digit buttons`, async () => {
-    await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
-    await page.click(`#digit_6`);
-    await page.click(`#digit_6`);
-    const result = await page.$('.result');
-    const resultsValue = await (
-      await result.getProperty('innerText')
-    ).jsonValue();
-    expect(resultsValue).toBe('66');
   });
 
   tests.forEach((test, index) => {
@@ -80,9 +40,7 @@ describe(`${projectName} - test suite`, () => {
       const resultsValue = await (
         await result.getProperty('innerText')
       ).jsonValue();
-      expect(Number(resultsValue)).toBe(
-        calculate(test, num1 * 10 + num2, num1)
-      );
+      expect(resultsValue).toBe(`${eval(`${num1}${num2}${operation[index]}${num1}`)}`);
     });
   });
 
@@ -107,9 +65,7 @@ describe(`${projectName} - test suite`, () => {
       const resultsValue = await (
         await result.getProperty('innerText')
       ).jsonValue();
-      expect(Number(resultsValue)).toBe(
-        calculate(test, num1 + num2 / 10, num3 + num1 / 10)
-      );
+      expect(resultsValue).toBe(`${eval(`${num1}.${num2}${operation[index]}${num3}.${num1}`)}`);
     });
   });
 

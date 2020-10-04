@@ -9,21 +9,20 @@ how to start?
 2. run <b> npm i </b> on your terminal
 3. start coding!
 
+# Template instructions
+In the template file you will get 2 components. </br>
+MathOperation - should get {type , onClick(function)} as props. </br>
+DigitButton - should get {value(0-9) , onClick(function)} as props. </br>
+* You can use operationTypes array to check what values are expected as props at MathOperation component.
+
 # Requirements:
 
 1. Calculator must have 20 buttons.
 2. Should contain all numbers between 0-9 and a dot (.)
 3. AC button that clears the result screen
-4. Working parentheses [( )]
-5. Equal button (=)
-6. The calculator should return "error" when the user tries to divide by zero.
-7. The calculator should consider order of operations: </br>
-   Good way 👍🏿: </br>
-   2+3*4 = 14 </br>
-   Bad way 👎🏿: </br>
-   2+3*4 = 20 </br>
-8. The calculator should have the following functions: </br>
-
+4. Equal button (=)
+5. The calculator should return "Error" when the user tries to divide by zero.
+6. The calculator should have the following functions: </br>
 - divide / (9/2 = 4.5)
 - sum + (9+2 = 11)
 - minus - (9-2 = 7)
@@ -34,7 +33,12 @@ how to start?
 
 In order to make the tests run properly, do not change the id's of the components:
 
+# final result
+
+your result should look something like this </br>
+![calculator](./readme-files/calc-img.png?raw=true "calculator")
+
 # How to submit?
 
 just uplaod your repoistory to our website : www.Hirlul.com/calculator-challenge
-and we will confirm that you code has fixed the calcultaor!
+and we will if you code has fixed the calcultaor!

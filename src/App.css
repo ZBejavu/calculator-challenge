@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+}
+
+.App {
+display: flex;  
+flex-direction: column;
+align-items: center;
+background-color: #282c34;
+min-height: 100vh;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 5% 0;
+}
+
+.calculator{
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color:  #1C1C1C;
+border: 2px solid #1C1C1C;
+border-radius: 3%;
+}
+
+.result{
+  font-family: 'Helvetica', 'Arial', sans-serif; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  height: 100px;
+  color: #eee;
+  font-size: calc(22px + 2vmin);
+  font-weight: 600;
+  border: 2px solid  #1C1C1C;
+}
+
+.calculations{
+  font-size: calc(10px + 2vmin);  
+  color: rgba(255, 255, 255, 0.493);
+}
+
+.calculator-digits {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 auto;
+  border: 2px solid  #1C1C1C;
+  border-radius: 5px;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: 3fr 1fr ;
+  /* padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px; */
+}
+
+.button {
+  font-family: 'Helvetica', 'Arial', sans-serif; 
+  background: rgb(45, 49, 63); /* light background with opacity 50% */
+  border: 1px solid #111; /* black border */
+  padding: 23px;
+  color: #eee; /* white text */
+  border-radius: 50%; /* rounded corners */
+  font-size: 22px; /* larger fonts */
+  font-weight: 700;
+  cursor: pointer; /* make it look clickable */
+  margin: 4px;
+}
+
+.button:hover {
+  background:  #8888884f; /* light background with opacity 50% */
+}
+
+.button:focus{
+  outline: none;
+}
+
+.number {
+  background-color: rgb(68, 68, 68);
+}
+
+.op {
+  background-color: #bbbbbb;
+  color: #1C1C1C;
+}
+
+.op:hover {
+  background-color: #979797;
+}
+
+.delete {
+  background-color: rgb(46, 153, 46);
+}
+
+.digits{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.operations{
+  display: flex;
+  flex-direction: column;
+}
+
+.operations>.button:hover{
+  background-color: rgb(64, 70, 90);
+}
+
+.AC {
+  background-color: #FF9500;
+}
+
+#op_AC:hover {
+  background-color: rgb(245, 179, 57);
+}

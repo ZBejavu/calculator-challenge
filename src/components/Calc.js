@@ -44,7 +44,7 @@ function Calc() {
       </div>
       <div className='calculator-digits'>
          {/**
-          * Enter here all of the digits components
+          * Enter here all of the MathOperation and DigitButton components
           */}
       </div>
     </div>

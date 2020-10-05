@@ -36,7 +36,7 @@ function Calc() {
    */
   let arr = Array(10).fill(0);
   let mathArr = ['sqrt', 'power', 'modulo', 'plus', 'minus', 'multi', 'divide', 'AC', 'equal', 'dot'];
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(false);
   const [number2, setNumber2] = useState(false);
   const [inMathOpp, setInMathOp] = useState(false);
   const [inDot, setInDot] = useState(false);
@@ -70,7 +70,7 @@ function Calc() {
       if(number2 === 0 && inMathOpp === '/'){
         setError(true);
       }
-      if(number2 && number){
+      if(number2 !== false && number !== false){
         let calculation = calculate(inMathOpp, number, number2);
         console.log(calculation);
         setNumber(calculation);
@@ -97,7 +97,7 @@ function Calc() {
              error ? 'Error'
              : <>
                 {
-                  number
+                  number === false? 0 : number
                 }
                 {
                   inMathOpp && inMathOpp
@@ -130,7 +130,7 @@ function Calc() {
                     setInDot(false);
                     return setNumber(number + currentnum/10);
                 }
-                if(!newNumber){
+                if(number === false){
                   return setNumber(currentnum)
                 }
                 if(inDot){
@@ -146,7 +146,7 @@ function Calc() {
                 }
                 if(inMathOpp){
                   console.log(inMathOpp)
-                  if(!secondNumber){
+                  if(number2 === false){
                     return setNumber2(currentnum)
                   }
                   secondNumber = secondNumber * 10;

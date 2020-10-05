@@ -20,7 +20,7 @@ const operations = {
   equal: { value: '=', className: 'button number', id: 'equal' },
   dot: { value: '.', className: 'button number', id: 'dot' },
 };
-
+export {operations}
 export const operationTypes = Object.keys(operations);
 
 export function MathOperation(props) {

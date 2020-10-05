@@ -2,7 +2,6 @@ import React from 'react';
 
 function DigitButton(props) {
   const { value, onClick } = props;
-
   return (
     <button
       className='button number'

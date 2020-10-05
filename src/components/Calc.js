@@ -78,7 +78,7 @@ function Calc() {
         return setInMathOp(false);
       }
     }
-    if(!inMathOpp){
+    if(!inMathOpp && operation !== 'equal'){
       setInMathOp(operations[operation].value)
     }
   }
@@ -146,6 +146,11 @@ function Calc() {
                 }
                 if(inMathOpp){
                   console.log(inMathOpp)
+                  if(inMathOpp === '%'){
+                    clearAll();
+                    console.log(calculate('%',number, currentnum))
+                    return setNumber(calculate('%',number, currentnum));
+                  }
                   if(number2 === false){
                     return setNumber2(currentnum)
                   }

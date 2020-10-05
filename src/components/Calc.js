@@ -123,6 +123,10 @@ function Calc() {
                 if(error){
                   setError(false);
                 }
+                if(inDot && newNumber === 0){
+                    setInDot(false);
+                    return setNumber(number + currentnum/10);
+                }
                 if(!newNumber){
                   return setNumber(currentnum)
                 }
